@@ -9,12 +9,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name="t_blog_user")
 public class User {
+	
 	@Id
     @GeneratedValue
     private Long id;
-
     @Column(name="user_name",nullable = false)
     private String userName;
+    @Column(name="user_pwd")
+    private String userPwd;
 
 	public Long getId() {
 		return id;
@@ -30,6 +32,14 @@ public class User {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getUserPwd() {
+		return userPwd;
+	}
+
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
     
     
