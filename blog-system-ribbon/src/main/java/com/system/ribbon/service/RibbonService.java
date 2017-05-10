@@ -15,7 +15,7 @@ public class RibbonService {
 		return restTemplate.postForObject("http://SERVICE-USER/user/add", u, User.class);
 	} 
 	
-	public User queryUser(Long id){
+	public User queryUser(String id){
 		return restTemplate.getForObject("http://SERVICE-USER/user/get?id="+id, User.class);
 	} 
 	

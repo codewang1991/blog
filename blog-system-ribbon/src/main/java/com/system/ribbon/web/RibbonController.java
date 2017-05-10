@@ -26,7 +26,7 @@ public class RibbonController {
 
 	@ResponseBody
 	@GetMapping(value="/query")
-	public User queryUser(@RequestParam Long id){
+	public User queryUser(@RequestParam String id){
 		User u=ribbonService.queryUser(id);
 		if(u!=null){
 			System.out.println("成功。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。"+u.getUserName());
