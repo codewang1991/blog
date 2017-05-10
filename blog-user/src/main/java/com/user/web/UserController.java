@@ -26,7 +26,7 @@ public class UserController {
 		return user;
 	}
 	@GetMapping(value="/get")
-	public User login(@RequestParam Long id){
+	public User login(@RequestParam String id){
 		User u=userRepository.getUserById(id);
 		if(u!=null){
 			System.out.println("查询成功。。。。。。。。。"+u.getUserName());

@@ -2,7 +2,7 @@ package com.user.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
 		
-	public User getUserById(Long id);
+	public User getUserById(String id);
 }

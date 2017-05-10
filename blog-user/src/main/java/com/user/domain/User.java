@@ -6,23 +6,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="t_blog_user")
 public class User {
 	
 	@Id
-    @GeneratedValue
-    private Long id;
+	@GenericGenerator(name="idGenerator", strategy="uuid") 
+    @GeneratedValue(generator="idGenerator")
+    private String id;
     @Column(name="user_name",nullable = false)
     private String userName;
     @Column(name="user_pwd")
     private String userPwd;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
