@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.user.dao.UserRepository;
 import com.user.domain.User;
-import com.user.domain.UserRepository;
 @RestController
 public class UserController {
 	
