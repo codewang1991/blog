@@ -12,11 +12,11 @@ public class RibbonService {
 	private RestTemplate restTemplate;
 	
 	public User regUser(User u){
-		return restTemplate.postForObject("http://SERVICE-USER/user/add", u, User.class);
+		return restTemplate.postForObject("http://SERVICE-USER/user/add/user", u, User.class);
 	} 
 	
 	public User queryUser(String id){
-		return restTemplate.getForObject("http://SERVICE-USER/user/get?id="+id, User.class);
+		return restTemplate.getForObject("http://SERVICE-USER/user/get/user/"+id, User.class);
 	} 
 	
 }

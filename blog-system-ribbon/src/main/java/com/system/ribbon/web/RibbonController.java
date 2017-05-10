@@ -2,6 +2,7 @@ package com.system.ribbon.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,14 +20,14 @@ public class RibbonController {
 	
 	
 	@ResponseBody
-	@PostMapping(value="/reg")
+	@PostMapping(value="/user")
 	public User regUser(@RequestBody User u){
 		return ribbonService.regUser(u);
 	}
 
 	@ResponseBody
-	@GetMapping(value="/query")
-	public User queryUser(@RequestParam String id){
+	@GetMapping(value="/user/{id}")
+	public User queryUser(@PathVariable String id){
 		User u=ribbonService.queryUser(id);
 		if(u!=null){
 			System.out.println("成功。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。"+u.getUserName());
