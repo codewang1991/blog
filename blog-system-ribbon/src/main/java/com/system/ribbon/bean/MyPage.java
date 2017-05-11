@@ -24,13 +24,6 @@ public class MyPage implements Serializable{
 		return this.currentPage-1;
 	}
 	
-	public MyPage(Object data,int totalPages,long totalElements,int pageSizes,int currentPage) {
-		this.data = data;
-		this.totalPages=totalPages;
-		this.totalElements=totalElements;
-		this.pageSizes=pageSizes;
-		this.currentPage=currentPage;
-	}
 	public Object getData() {
 		return data;
 	}
