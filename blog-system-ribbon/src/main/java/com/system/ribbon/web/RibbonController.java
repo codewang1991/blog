@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.system.ribbon.bean.MyPage;
 import com.system.ribbon.bean.User;
 import com.system.ribbon.service.RibbonService;
 
@@ -28,10 +29,21 @@ public class RibbonController {
 	@ResponseBody
 	@GetMapping(value="/user/{id}")
 	public User queryUser(@PathVariable String id){
-		User u=ribbonService.queryUser(id);
-		if(u!=null){
-			System.out.println("成功。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。"+u.getUserName());
-		}
-		return u;
+		return ribbonService.queryUser(id);
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/users")
+	public MyPage userList(@RequestParam(name="currentPage",defaultValue="1",required=false)Integer currentPage,
+			@RequestParam(name="pageSize",defaultValue="10",required=false)Integer pageSize){
+		return ribbonService.getAllUsers(currentPage,pageSize);
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/user")
+	public MyPage queryUserByName(@RequestParam(name="name")String name,
+			@RequestParam(name="currentPage",defaultValue="1",required=false)Integer currentPage,
+			@RequestParam(name="pageSize",defaultValue="10",required=false)Integer pageSize){
+		return ribbonService.queryUserByName(name,currentPage,pageSize);
 	}
 }

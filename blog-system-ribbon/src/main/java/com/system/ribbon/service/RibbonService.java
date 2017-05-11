@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.system.ribbon.bean.MyPage;
 import com.system.ribbon.bean.User;
 @Service
 public class RibbonService {
@@ -19,4 +20,13 @@ public class RibbonService {
 		return restTemplate.getForObject("http://SERVICE-USER/user/get/user/"+id, User.class);
 	} 
 	
+	public MyPage queryUserByName(String name,int currentPage,int pageSize){
+		return restTemplate.getForObject("http://SERVICE-USER/user/get/user?name="+name+
+				"&currentPage="+currentPage+"&pageSize="+pageSize, MyPage.class);
+	} 
+	
+	public MyPage getAllUsers(int currentPage,int pageSize){
+		return restTemplate.getForObject("http://SERVICE-USER/user/get/users?currentPage="+currentPage+
+				"&pageSize="+pageSize, MyPage.class);
+	} 
 }
