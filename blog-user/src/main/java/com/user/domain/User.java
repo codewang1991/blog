@@ -41,6 +41,12 @@ public class User {
 	@Column(name="del_flag")
 	private Integer delFlag=0;
 	
+	@Column(name="cellphone_num")
+	private String cellphoneNum;
+	
+	@Column(name="user_addr")
+	private String userAddr;
+	
     public String getId() {
 		return id;
 	}
@@ -103,6 +109,22 @@ public class User {
 			delFlag=0;
 		}
 		this.delFlag = delFlag;
+	}
+
+	public String getCellphoneNum() {
+		return cellphoneNum;
+	}
+
+	public void setCellphoneNum(String cellphoneNum) {
+		this.cellphoneNum = cellphoneNum;
+	}
+
+	public String getUserAddr() {
+		return userAddr;
+	}
+
+	public void setUserAddr(String userAddr) {
+		this.userAddr = userAddr;
 	}
     
     
