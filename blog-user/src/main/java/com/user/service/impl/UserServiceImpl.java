@@ -63,6 +63,28 @@ public class UserServiceImpl implements UserService{
 		return myPage;
 	}
 
+	@Override
+	public void delUser(String id) {
+		try{
+			userRepository.delUser(id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public MyPage getAllUsers(Integer currentPage, Integer pageSize) {
+		 MyPage myPage=null;
+			try{
+			  Page<User> page=userRepository.getAllUsers(new PageRequest(currentPage-1, pageSize,new Sort(Direction.DESC, "createTime")));
+			  myPage=new MyPage(page.getContent(),page.getTotalPages(),page.getTotalElements(),page.getSize(),currentPage);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			return myPage;
+	}
+
 	
 
 }

@@ -15,15 +15,18 @@ spring:
   application:
     name: service-user
     
-##register eureka server
+##register  eureka server
 eureka:
   client:
     service-url: 
       defaultZone: http://localhost:8761/eureka/
 ##log      
-#logging:
-  #level:
-   #root:ERROR
+logging:
+  path: D:\\logs\\service-user
+  level:
+    root: ERROR
+    com.user.web: INFO
+  
    
 ##http server
 server:

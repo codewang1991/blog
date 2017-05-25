@@ -3,10 +3,6 @@ import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.user.dao.UserRepository;
 import com.user.domain.MyPage;
 import com.user.domain.User;
 import com.user.service.UserService;
@@ -44,12 +39,16 @@ public class UserController {
 	public MyPage userList(@RequestParam(name="currentPage",defaultValue="1",required=false)Integer currentPage,
 			@RequestParam(name="pageSize",defaultValue="10",required=false)Integer pageSize){
 		
-		return userService.getAllUserByPage(currentPage, pageSize);
+		return userService.getAllUsers(currentPage, pageSize);
 	}
 	@GetMapping(value="/get/user")
 	public MyPage queryByUserName(@RequestParam(name="name") String userName,
 			@RequestParam(name="currentPage",defaultValue="1",required=false)Integer currentPage,
 			@RequestParam(name="pageSize",defaultValue="10",required=false)Integer pageSize){
 		return userService.getUserByName(userName, currentPage, pageSize);
+	}
+	@GetMapping(value="/del/user")
+	public void delUser(@RequestParam(name="id")String id){
+		userService.delUser(id);
 	}
 }
