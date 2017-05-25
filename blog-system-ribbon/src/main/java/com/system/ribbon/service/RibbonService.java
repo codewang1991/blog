@@ -29,4 +29,9 @@ public class RibbonService {
 		return restTemplate.getForObject("http://SERVICE-USER/user/get/users?currentPage="+currentPage+
 				"&pageSize="+pageSize, MyPage.class);
 	} 
+	
+	public void delUser(String id){
+		restTemplate.delete("http://SERVICE-USER/user/del/user?id="+id);
+	}
+	
 }

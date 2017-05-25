@@ -1,6 +1,7 @@
 package com.system.ribbon.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,5 +46,10 @@ public class RibbonController {
 			@RequestParam(name="currentPage",defaultValue="1",required=false)Integer currentPage,
 			@RequestParam(name="pageSize",defaultValue="10",required=false)Integer pageSize){
 		return ribbonService.queryUserByName(name,currentPage,pageSize);
+	}
+	
+	@DeleteMapping(value="/user")
+	public void delUser(@RequestParam(name="id")String id){
+		ribbonService.delUser(id);
 	}
 }
